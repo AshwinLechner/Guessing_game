@@ -15,23 +15,23 @@ def start_game():
     start_game()
 
 
-
-def numberGuessed(num):
-    num = int(num) 
-    return num
+try:
+    def numberGuessed(num):
+        num = int(num)
+        return num
 
     
-print("""
+    print("""
     Welcome to the guessing game!
     Please guess a number between 1 and 10
     """)
 
-random_number = random.randint(1, 10)
+    random_number = random.randint(1, 10)
+    
+    number_guessed = numberGuessed(input())
+    
+    number_of_tries = 1
 
-number_guessed = numberGuessed(input())
-
-number_of_tries = 0
-try:
     while True:
         if number_guessed == random_number:
             print("Thats correct! i took you {} tries to guess the correct number.".format(number_of_tries))
