@@ -9,46 +9,42 @@ import random
 
 def start_game():
 
-
-
-# Kick off the program by calling the start_game function.
-    start_game()
-
-
-try:
-    def numberGuessed(num):
-        num = int(num)
-        return num
-
-    
     print("""
     Welcome to the guessing game!
     Please guess a number between 1 and 10
     """)
 
+    def numbers_guessed():
+        while True:
+            try:
+                guess = input(
+                    "Guess a number between 1 and 10 ")
+                guess = int(guess)
+                break
+            except ValueError:
+                print("Please enter a valid number. ")
+        return guess
+
     random_number = random.randint(1, 10)
-    
-    number_guessed = numberGuessed(input())
-    
+    guessed = numbers_guessed()
     number_of_tries = 1
 
     while True:
-        if number_guessed == random_number:
-            print("Thats correct! i took you {} tries to guess the correct number.".format(number_of_tries))
+        if guessed == random_number:
+            print("Thats correct! i took you {} tries to guess the correct number.".format(
+                number_of_tries))
+            print("The game is over now, thank you for playing")
             break
-        elif number_guessed > random_number:
+        elif guessed > random_number:
             print("the number is lower.  ")
-            number_guessed = numberGuessed(input("please try again "))
+            guessed = numbers_guessed()
             number_of_tries += 1
             continue
-        elif number_guessed < random_number:
+        elif guessed < random_number:
             print("the number is higher.  ")
-            number_guessed = numberGuessed(input("please try again "))
+            guessed = numbers_guessed()
             number_of_tries += 1
             continue
-    
-except ValueError:
-    print("please select a valid number")
-    
-print("The game is over now, thank you for playing")    
 
+
+start_game()
